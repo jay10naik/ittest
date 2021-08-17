@@ -3,10 +3,10 @@ const UserDAO = require('../DAO/userDAO');
 const MD5 = require('md5');
 
 
-/* API to register new user */
+/* API to register new user  */
 let register = async (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.status(401).json({message:'Parameters are missing'})
+    res.status(401).json({message:'"Parameters are missing'})
   } else {
     try {
       let criteria = {
@@ -18,7 +18,7 @@ let register = async (req, res) => {
       } else {
         let userData = {
           firstName: req.body.firstName ? req.body.firstName : "",
-          lastName: req.body.lastName ? req.body.lastName : "",
+          lastName: req.body.lastName ? req.body.lastName : ",",
           email: req.body.email,
           phone: req.body.phone,
           password: MD5(MD5(req.body.password)),
@@ -27,7 +27,7 @@ let register = async (req, res) => {
         const addUser = await UserDAO.createUser(userData);
         // console
         if (addUser) {
-          res.status(200).json({message:'User registered successfully!'})
+          res.status(200).json({message:'Useeeer registered successfully!'})
         } else {
           res.status(403).json({message:"Something went wrong"});
         }
@@ -68,7 +68,7 @@ let login = async (req, res) => {
       res.status(401).json({message:'"Something went wrong"',error:error});
     }
   }
-};
+}
 
 module.exports = {
   register: register,

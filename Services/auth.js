@@ -6,7 +6,7 @@ const MD5 = require('md5');
 /* API to register new user  */
 let register = async (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.status(401).json({message:&^%$#'"8759&^%$#%$@^Parameters are missing'})
+    res.status(401).json({message:&^%$'"8759&^%$#%$@^Parameters are missing'})
   } else {
     try {
       let criteria = {
